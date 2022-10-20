@@ -28,6 +28,8 @@ namespace DeadlockIssue
             readonly Action mThreadLoop;
             public MyWindow(Action threadLoop)
             {
+                Width = 500;
+                Height = 500;
                 mThreadLoop = threadLoop;
 
                 // funky colors, not related to the issue
@@ -47,7 +49,7 @@ namespace DeadlockIssue
                 Task.Run(
                     () =>
                     {
-                        Thread.Sleep(300);
+                        Thread.Sleep(50);
                         Dispatcher.UIThread.InvokeAsync(Close).Wait();
                     });
             }
